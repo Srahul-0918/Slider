@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Upload{% endblock %}
+
+{% block body %}
+    <h1>Upload Media</h1>
+
+    <form action="{{ path('upload') }}" method="post" enctype="multipart/form-data">
+        <label for="imageFile">Upload Image (JPG, PNG, etc.):</label>
+        <input type="file" name="imageFile" id="imageFile" accept="image/*">
+        <br>
+
+        <label for="videoFile">Upload Video (MP4, AVI, etc.):</label>
+        <input type="file" name="videoFile" id="videoFile" accept="video/*">
+        <br>
+
+        <!-- Hidden input field for siteReference -->
+        <input type="hidden" name="sitereference" value="{{ app.request.query.get('sitereference') }}">
+
+        <input type="submit" value="Upload">
+    </form>
+{% endblock %}
